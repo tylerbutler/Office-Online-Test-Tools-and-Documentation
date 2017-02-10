@@ -639,7 +639,7 @@ Workflow properties
 
         A ``WorkflowType`` is a dictionary with the following keys:
 
-        ``WorkflowName``
+        WorkflowName
             A string value containing the name of the Workflow. Possible values are:
 
             * ``Assign``
@@ -647,14 +647,14 @@ Workflow properties
 
             This value is required. If not provided, the WOPI client must ignore that WorkflowType.
 
-        ``Url``
+        Url
             A URI to a location that allows the user to participate in the specified workflow for the file.
 
-        ``PostMessage``
+        PostMessage
             A Boolean value indicating whether the host expects to receive the :js:data:`UI_Workflow` PostMessage when
             the workflow UI is activated in the WOPI client.
 
-        ``CommandText``
+        CommandText
             A string value that should be used by the client when displaying UI related to the specified WorkflowType.
             If not provided, the WOPI client may use its own default value.
 
@@ -662,10 +662,10 @@ Workflow properties
             **X-WOPI-ClientLocale** header value to determine
 
             ..  tip:: If the **X-WOPI-ClientLocale** request header is not provided, hosts should omit the
-                ``CommandText`` value so WOPI clients will use their default value. Otherwise a WOPI client might
+                *CommandText* value so WOPI clients will use their default value. Otherwise a WOPI client might
                 display UI in multiple languages.
 
-        At least one of the ``Url`` and ``PostMessage`` values must be specified. If neither value is provided, then
+        At least one of the *Url* and *PostMessage* values must be specified. If neither value is provided, then
         the WorkflowType value must be ignored by the WOPI client.
 
         ..  important::
@@ -688,11 +688,11 @@ Workflow properties
 
         **Example**
 
-        ..  literalinclude:: /_fragments/schemas/workflow_type_array_example.json
-            :language: JSON
-
         This example illustrates a valid value for the WorkflowTypes property. In this example, two workflow types are
         specified, one for ``Submit`` and another for ``Assign``.
+
+        ..  literalinclude:: /_fragments/schemas/workflow_type_array_example.json
+            :language: JSON
 
 
 Deprecated properties
