@@ -40,3 +40,15 @@ should be replaced with an appropriate language for the user so that the proper 
 ..  include:: ../../_shared/stub.rst
 
 ..  |issue| issue:: 5
+
+
+..  _minicheck:
+
+Accelerating |wac| application boot
+-----------------------------------
+
+WOPI hosts can choose to send a subset of the properties in :ref:`CheckFileInfo` to the |wac| applications by
+passing the data to the |wac| action URL. In this case, the host must also sign the data with a private key and expose
+the corresponding public key via the :ref:`GetPublicKeys` operation.
+
+..  todo:: Add more detail here, including the format of the parameters and how the signing/verification works.

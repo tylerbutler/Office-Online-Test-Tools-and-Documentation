@@ -103,6 +103,7 @@ server intends to integrate with. To learn more about the specific requirements 
     /containers/GetEcosystem
     /ecosystem/GetFileWopiSrc
     /ecosystem/GetRootContainer
+    /ecosystem/GetPublicKeys
 
 
 ..  toctree::
