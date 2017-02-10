@@ -631,23 +631,45 @@ Workflow properties
 ..  glossary::
     :sorted:
 
-    WorkflowType
+    Workflows
         |prerelease|
 
-        An **array of strings** containing the workflow types available for the document. Possible values are:
+        An **array of WorkflowTypes** containing the workflow types available for the document.
+        Possible values for the keys of the dictionary are:
 
-        * ``Assign``
-        * ``Submit``
+        A ``WorkflowType`` is a dictionary with the following keys:
 
-        This property must always be specified if :term:`WorkflowUrl` or :term:`WorkflowPostMessage` are provided. If
-        this property is *not* supplied, then both :term:`WorkflowUrl` and :term:`WorkflowPostMessage` must be ignored
-        by the WOPI client.
+        ``WorkflowName``
+            A string value containing the name of the Workflow. Possible values are:
 
-        Conversely, if the WorkflowType property is provided but neither :term:`WorkflowUrl` nor
-        :term:`WorkflowPostMessage` are provided, then the WorkflowType value must be ignored by the WOPI client.
+            * ``Assign``
+            * ``Submit``
+
+            This value is required. If not provided, the WOPI client must ignore that WorkflowType.
+
+        ``Url``
+            A URI to a location that allows the user to participate in the specified workflow for the file.
+
+        ``PostMessage``
+            A Boolean value indicating whether the host expects to receive the :js:data:`UI_Workflow` PostMessage when
+            the workflow UI is activated in the WOPI client.
+
+        ``CommandText``
+            A string value that should be used by the client when displaying UI related to the specified WorkflowType.
+            If not provided, the WOPI client may use its own default value.
+
+            This value should be localized, since it may appear in WOPI client UI. WOPI hosts can use the
+            **X-WOPI-ClientLocale** header value to determine
+
+            ..  tip:: If the **X-WOPI-ClientLocale** request header is not provided, hosts should omit the
+                ``CommandText`` value so WOPI clients will use their default value. Otherwise a WOPI client might
+                display UI in multiple languages.
+
+        At least one of the ``Url`` and ``PostMessage`` values must be specified. If neither value is provided, then
+        the WorkflowType value must be ignored by the WOPI client.
 
         ..  important::
-            While this property is an array of strings, note that specific values of WorkflowType may be mutually
+            While this property is an array of WorkflowTypes, note that specific values of WorkflowType may be mutually
             exclusive depending on the WOPI client. WOPI clients must use the following guidelines when handling
             values in the WorkflowType array:
 
@@ -657,13 +679,20 @@ Workflow properties
               use the first supported value provided in the array or behave as though the WorkflowType property was
               not provided.
 
-    WorkflowUrl
-        |prerelease|
+        **JSON Schema**
 
-        A URI to a location that allows the user to participate in a workflow for the file.
+        The WorkflowType object is defined by this JSON schema:
 
-        ..  important::
-            This value will be ignored if :term:`WorkflowType` is not provided.
+        ..  literalinclude:: /_fragments/schemas/workflow_type.json
+            :language: JSON
+
+        **Example**
+
+        ..  literalinclude:: /_fragments/schemas/workflow_type_array_example.json
+            :language: JSON
+
+        This example illustrates a valid value for the WorkflowTypes property. In this example, two workflow types are
+        specified, one for ``Submit`` and another for ``Assign``.
 
 
 Deprecated properties
