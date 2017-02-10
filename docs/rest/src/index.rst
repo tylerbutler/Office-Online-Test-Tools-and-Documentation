@@ -52,6 +52,7 @@ server intends to integrate with. To learn more about the specific requirements 
     /common_headers
     /native_apps
     /security
+    /rate_limiting
 
 
 ..  toctree::

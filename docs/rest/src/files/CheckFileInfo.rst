@@ -34,6 +34,7 @@ CheckFileInfo
     :code 200: Success
     :code 401: Invalid :term:`access token`
     :code 404: Resource not found/user unauthorized
+    :code 429: Too many requests; see :ref:`throttling` for more information
     :code 500: Server error
 
     ..  include:: /_fragments/common_headers.rst
