@@ -550,15 +550,15 @@ every outgoing PostMessage:
     The UI_Workflow message is posted when the user activates the :guilabel:`Workflow` UI in Office Online. The host
     should use this message to trigger any custom workflow UI.
 
-    To send this message, the :term:`WorkflowPostMessage` property in the :ref:`CheckFileInfo` response from the
-    host must be set to ``true``. Otherwise Office Online will not send this message.
+    To send this message, the :term:`Workflows` property in the :ref:`CheckFileInfo` response must have a *PostMessage*
+    property set to ``true``. Otherwise Office Online will not send this message.
 
     ..  attribute:: Values
         :noindex:
 
         WorkflowType *(string)*
-            The :term:`WorkflowType` associated with the message. This will match one of the values provided by the
-            host in the :term:`WorkflowType` property in :ref:`CheckFileInfo`.
+            The :term:`WorkflowType` associated with the message. This will match one of the *WorkflowName* values
+            provided by the host in the :term:`Workflows` property in :ref:`CheckFileInfo`.
 
 
     ..  rubric:: Example Message:
