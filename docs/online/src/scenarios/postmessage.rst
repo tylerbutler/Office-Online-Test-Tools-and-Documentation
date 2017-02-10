@@ -283,7 +283,6 @@ The host page receives the following messages; all others are ignored:
 * :data:`File_Rename`
 * :data:`UI_Close`
 * :data:`UI_Edit`
-* :data:`UI_FileVersions`
 * :data:`UI_Sharing`
 * :data:`UI_Workflow`
 
@@ -512,6 +511,31 @@ every outgoing PostMessage:
 
         {
             "MessageId": "UI_FileVersions",
+            "SendTime": 1329014075000,
+            "Values": {
+                "wdUserSession": "3692f636-2add-4b64-8180-42e9411c4984",
+                "ui-language": "1033"
+            }
+        }
+
+..  data:: UI_InsertImage
+
+    The UI_InsertImage message is posted when the user activates the *Insert Image* UI in Office Online.
+
+    To send this message, the :term:`InsertOnlinePicturePostMessage` property in the :ref:`CheckFileInfo` response
+    from the host must be set to ``true``. Otherwise Office Online will not send this message.
+
+    ..  attribute:: Values
+        :noindex:
+
+        :ref:`Common values <outgoing postmessage common values>` only.
+
+    ..  rubric:: Example Message:
+
+    ..  code-block:: JSON
+
+        {
+            "MessageId": "UI_InsertImage",
             "SendTime": 1329014075000,
             "Values": {
                 "wdUserSession": "3692f636-2add-4b64-8180-42e9411c4984",
