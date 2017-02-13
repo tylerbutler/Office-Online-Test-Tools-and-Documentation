@@ -77,6 +77,7 @@ You can send the following messages; all others are ignored:
 * :data:`App_PopState`
 * :data:`Blur_Focus`
 * :data:`Grab_Focus`
+* :data:`Host_InsertImage`
 * :data:`Host_PerfTiming`
 * :data:`Host_PostmessageReady`
 
@@ -160,6 +161,41 @@ You can send the following messages; all others are ignored:
             "MessageId": "Grab_Focus",
             "SendTime": 1329014075000,
             "Values": { }
+        }
+
+..  data:: Host_InsertImage
+
+    The Host_InsertImage message should be sent to the |wac| frame when the user selects an image from the host file
+    selection UI. It is closely related to the :js:data:`UI_InsertImage` message.
+
+    ..  attribute:: Values
+        :noindex:
+
+        **Extension** *(string)*
+            The file extension for the selected file. This value must begin with a ``.``.
+
+        **SourceUrl** *(string)*
+            A URL that the WOPI client can use to retrieve the selected file.
+
+        **Width** *(integer)*
+            The width of the image in pixels.
+
+        **Height** *(integer)*
+            The height of the image in pixels.
+
+    ..  rubric:: Example Message:
+
+    ..  code-block:: JSON
+
+        {
+            "MessageId": "Host_InsertImage",
+            "SendTime": 1329014075000,
+            "Values": {
+                "Extension": ".jpg",
+                "SourceUrl": "https://contosodrive.com/images/1aed278sbdec74a.jpg",
+                "Width": 800,
+                "Height": 600
+            }
         }
 
 ..  data:: Host_PerfTiming
@@ -520,7 +556,10 @@ every outgoing PostMessage:
 
 ..  data:: UI_InsertImage
 
-    The UI_InsertImage message is posted when the user activates the *Insert Image* UI in Office Online.
+    The UI_InsertImage message is posted when the user activates the *Insert Image* UI in Office Online. This message
+    can be used to allow users to insert images that are stored in the host's storage. Hosts are expected to display
+    a modal file selection UI in response to this message. After the user has selected an image, the host sends the
+    :js:data:`Host_InsertImage`` message to the |wac| frame.
 
     To send this message, the :term:`InsertOnlinePicturePostMessage` property in the :ref:`CheckFileInfo` response
     from the host must be set to ``true``. Otherwise Office Online will not send this message.

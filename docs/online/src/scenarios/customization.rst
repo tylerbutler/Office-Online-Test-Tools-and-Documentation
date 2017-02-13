@@ -185,7 +185,7 @@ settings prohibit it, etc.), |wac| UI that triggers a PostMessage will be hidden
         If neither the :term:`FileVersionUrl` nor the :term:`FileVersionPostMessage` properties are set, the
         :guilabel:`Previous Versions` UI will be hidden in |wac|.
 
-    InsertOnlinePicturePostMessage
+    InsertImagePostMessage
         |prerelease|
 
         A **Boolean** value that, when set to ``true``, indicates the host expects to receive the
