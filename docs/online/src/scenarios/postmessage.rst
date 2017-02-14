@@ -165,11 +165,14 @@ You can send the following messages; all others are ignored:
 
 ..  data:: Host_InsertImage
 
-    The Host_InsertImage message should be sent to the |wac| frame when the user selects an image from the host file
+    The Host_InsertImage message should be sent to the |wac| iframe when the user selects an image from the host file
     selection UI. It is closely related to the :js:data:`UI_InsertImage` message.
 
     ..  attribute:: Values
         :noindex:
+
+        Hosts can support inserting multiple images at once. Thus, the *Values* property should be an array of
+        objects, where each object in the array has the following properties:
 
         **Extension** *(string)*
             The file extension for the selected file. This value must begin with a ``.``.
@@ -190,12 +193,20 @@ You can send the following messages; all others are ignored:
         {
             "MessageId": "Host_InsertImage",
             "SendTime": 1329014075000,
-            "Values": {
-                "Extension": ".jpg",
-                "SourceUrl": "https://contosodrive.com/images/1aed278sbdec74a.jpg",
-                "Width": 800,
-                "Height": 600
-            }
+            "Values": [
+                {
+                    "Extension": ".jpg",
+                    "SourceUrl": "https://contosodrive.com/images/1aed278abdec74ab.jpg",
+                    "Width": 800,
+                    "Height": 600
+                },
+                {
+                    "Extension": ".jpg",
+                    "SourceUrl": "https://contosodrive.com/images/259aef4d21a84edb.jpg",
+                    "Width": 800,
+                    "Height": 600
+                }
+            ]
         }
 
 ..  data:: Host_PerfTiming
@@ -567,7 +578,10 @@ every outgoing PostMessage:
     ..  attribute:: Values
         :noindex:
 
-        :ref:`Common values <outgoing postmessage common values>` only.
+        FileExtensionFilterList *(array of strings)*
+            An array of strings representing the file extensions that the host should filter their file selection UI.
+            All extensions must begin with a ``.``.
+
 
     ..  rubric:: Example Message:
 
@@ -577,6 +591,7 @@ every outgoing PostMessage:
             "MessageId": "UI_InsertImage",
             "SendTime": 1329014075000,
             "Values": {
+                "FileExtensionFilterList": [".jpg", ".jpeg", ".png", ".gif"],
                 "wdUserSession": "3692f636-2add-4b64-8180-42e9411c4984",
                 "ui-language": "1033"
             }
