@@ -20,6 +20,9 @@ CheckContainerInfo
 
     ..  include:: /_fragments/common_containers_params.rst
 
+    :reqheader X-WOPI-ClientLocale:
+        A **string** representing the locale used by the WOPI client, in the format described in :rfc:`1766`.
+
     :code 200: Success
     :code 401: Invalid :term:`access token`
     :code 404: Resource not found/user unauthorized

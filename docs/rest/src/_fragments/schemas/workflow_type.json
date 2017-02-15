@@ -21,11 +21,7 @@
   ],
   "properties": {
     "WorkflowName": {
-      "type": "string",
-      "enum": [
-        "Assign",
-        "Submit"
-      ]
+      "type": "string"
     },
     "Url": {
       "format": "uri",
@@ -34,7 +30,7 @@
     "PostMessage": {
       "type": "boolean"
     },
-    "CommandText": {
+    "UIText": {
       "type": "string"
     }
   }

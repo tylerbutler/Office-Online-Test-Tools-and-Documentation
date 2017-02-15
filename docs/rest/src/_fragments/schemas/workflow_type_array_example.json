@@ -1,16 +1,16 @@
 {
-  "WorkflowTypes": [
+  "Workflows": [
     {
       "WorkflowName": "Submit",
       "Url": "https://contosodrive.com/docs/12345/?mode=submit",
       "PostMessage": true,
-      "CommandText": "Senden"
+      "UIText": "Senden"
     },
     {
       "WorkflowName": "Assign",
       "Url": "https://contosodrive.com/docs/12345/?mode=manage",
       "PostMessage": true,
-      "CommandText": "Zuweisen"
+      "UIText": "Zuweisen"
     }
   ]
 }

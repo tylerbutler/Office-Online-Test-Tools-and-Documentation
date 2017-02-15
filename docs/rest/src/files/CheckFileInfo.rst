@@ -28,6 +28,9 @@ CheckFileInfo
 
     ..  include:: /_fragments/common_params.rst
 
+    :reqheader X-WOPI-ClientLocale:
+        A **string** representing the locale used by the WOPI client, in the format described in :rfc:`1766`.
+
     :reqheader X-WOPI-SessionContext:
         The value of the :term:`session context <SESSION_CONTEXT>`, if provided on the initial WOPI action URL.
 
@@ -634,50 +637,62 @@ Workflow properties
     Workflows
         |prerelease|
 
-        An **array of WorkflowTypes** containing the workflow types available for the document.
-        Possible values for the keys of the dictionary are:
+        An **array of WorkflowTypes** containing the workflow types available for the document. WOPI clients must use
+        the workflows in the order they are specified in the array. For example, if three workflows are specified by
+        the host, and the client only supports two workflows, then the client must use the first two WorkflowTypes
+        in the array (as long as they are valid).
 
-        A ``WorkflowType`` is a dictionary with the following keys:
+        A ``WorkflowType`` is an object with the following properties:
 
         WorkflowName
-            A string value containing the name of the Workflow. Possible values are:
+            A **string** value containing the name of the workflow. This value is required. If not provided, the
+            WorkflowType is invalid and WOPI clients must ignore that WorkflowType.
 
-            * ``Assign``
-            * ``Submit``
-
-            This value is required. If not provided, the WOPI client must ignore that WorkflowType.
+            This value is opaque to the WOPI client; a host must not require that the client have unique behavior based
+            on the WorkflowName. Moreover, a client must not implement unique behavior based on the WorkflowName.
 
         Url
             A URI to a location that allows the user to participate in the specified workflow for the file.
 
+            ..  tip::
+
+                Hosts should provide this value whenever possible for maximum compatibility with WOPI clients.
+                Web-based WOPI clients can use PostMessage, but other WOPI clients may not be able to. Thus, it is
+                best to provide a Url value for non-web-based clients.
+
         PostMessage
-            A Boolean value indicating whether the host expects to receive the :js:data:`UI_Workflow` PostMessage when
-            the workflow UI is activated in the WOPI client.
+            A **Boolean** value indicating whether the host expects to receive the :js:data:`UI_Workflow` PostMessage
+            when the workflow UI is activated in the WOPI client.
 
-        CommandText
-            A string value that should be used by the client when displaying UI related to the specified WorkflowType.
-            If not provided, the WOPI client may use its own default value.
+        UIText
+            A **string** value that should be used by the client when displaying UI related to the specified
+            WorkflowType. If not provided, the WOPI client may use its own default value.
 
-            This value should be localized, since it may appear in WOPI client UI. WOPI hosts can use the
-            **X-WOPI-ClientLocale** header value to determine
+            If provided, this value should be localized, since it may appear in WOPI client UI. WOPI hosts can use the
+            **X-WOPI-ClientLocale** request header value to determine the language for this value.
 
-            ..  tip:: If the **X-WOPI-ClientLocale** request header is not provided, hosts should omit the
-                *CommandText* value so WOPI clients will use their default value. Otherwise a WOPI client might
-                display UI in multiple languages.
+            ..  tip::
+
+                If the **X-WOPI-ClientLocale** request header is not provided, hosts should omit the *UIText*
+                value so WOPI clients will use their default value. Otherwise a WOPI client might display UI in
+                multiple languages.
+
+            ..  important::
+
+                This value should be a UTF-8 string. Hosts should not apply any other encoding to the value (for
+                example, URL-encoding).
+
+        SkipSave
+            A **Boolean** value indicating that the WOPI client does not need to save the file to the WOPI host before
+            triggering the workflow.
 
         At least one of the *Url* and *PostMessage* values must be specified. If neither value is provided, then
-        the WorkflowType value must be ignored by the WOPI client.
+        the WorkflowType value is invalid and must be ignored by the WOPI client.
 
         ..  important::
-            While this property is an array of WorkflowTypes, note that specific values of WorkflowType may be mutually
-            exclusive depending on the WOPI client. WOPI clients must use the following guidelines when handling
-            values in the WorkflowType array:
-
-            * If no supported values are provided, the WOPI client must behave as though the WorkflowType property was
-              not provided.
-            * If multiple values are provided and the WOPI client does not support multiple values, the client may
-              use the first supported value provided in the array or behave as though the WorkflowType property was
-              not provided.
+            If multiple WorkflowTypes are provided and the WOPI client does not support multiple values, the client
+            may use the first supported value provided in the array or behave as though the WorkflowType property
+            was not provided.
 
         **JSON Schema**
 
@@ -688,7 +703,7 @@ Workflow properties
 
         **Example**
 
-        This example illustrates a valid value for the WorkflowTypes property. In this example, two workflow types are
+        This example illustrates a valid value for the Workflows property. In this example, two workflow types are
         specified, one for ``Submit`` and another for ``Assign``.
 
         ..  literalinclude:: /_fragments/schemas/workflow_type_array_example.json
