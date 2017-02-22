@@ -58,3 +58,10 @@ in the case of web-based WOPI clients, by visiting a host page that issues the a
 access token lifetime can apply. This is safe in those cases because there is a separate primary authentication method
 that is also in use. In the case of :ref:`Bootstrap`, it is an OAuth token. In the case of web-based WOPI clients,
 it is the host's standard web authentication system.
+
+
+WOPI and CORS
+-------------
+
+.. This is a placeholder to cover host responsibilities to support browser-based WOPI clients (i.e. calling WOPI
+.. operations directly from the browser).
