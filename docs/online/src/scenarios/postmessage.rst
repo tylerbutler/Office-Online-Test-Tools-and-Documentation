@@ -556,9 +556,9 @@ every outgoing PostMessage:
     ..  attribute:: Values
         :noindex:
 
-        WorkflowType *(string)*
-            The :term:`WorkflowType` associated with the message. This will match one of the *WorkflowName* values
-            provided by the host in the :term:`Workflows` property in :ref:`CheckFileInfo`.
+        WorkflowName *(string)*
+            The :term:`Workflow<workflows>` associated with the message. This will match one of the *WorkflowName*
+            values provided by the host in the :term:`Workflows` property in :ref:`CheckFileInfo`.
 
 
     ..  rubric:: Example Message:
@@ -569,7 +569,7 @@ every outgoing PostMessage:
             "MessageId": "UI_Workflow",
             "SendTime": 1329014075000,
             "Values": {
-                "WorkflowType": "Submit",
+                "WorkflowName": "Submit",
                 "wdUserSession": "3692f636-2add-4b64-8180-42e9411c4984",
                 "ui-language": "1033"
             }
