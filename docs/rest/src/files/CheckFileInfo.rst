@@ -640,7 +640,7 @@ Workflow properties
         An **array of WorkflowTypes** containing the workflow types available for the document. WOPI clients must use
         the workflows in the order they are specified in the array. For example, if three workflows are specified by
         the host, and the client only supports two workflows, then the client must use the first two WorkflowTypes
-        in the array (as long as they are valid).
+        in the array provided they are valid.
 
         A ``WorkflowType`` is an object with the following properties:
 
