@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "http://wopi.tech/schemas/WorkflowType.json",
+  "id": "https://raw.githubusercontent.com/Microsoft/Office-Online-Test-Tools-and-Documentation/master/docs/rest/src/_schemas/WorkflowType.json",
   "title": "WOPI WorkflowType JSON Schema",
   "description": "A WOPI WorkflowType object",
   "type": "object",

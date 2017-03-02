@@ -698,7 +698,7 @@ Workflow properties
 
         The WorkflowType object is defined by this JSON schema:
 
-        ..  literalinclude:: /_fragments/schemas/workflow_type.json
+        ..  literalinclude:: /_schemas/WorkflowType.json
             :language: JSON
 
         **Example**
@@ -706,7 +706,7 @@ Workflow properties
         This example illustrates a valid value for the Workflows property. In this example, two workflow types are
         specified, one for ``Submit`` and another for ``Assign``.
 
-        ..  literalinclude:: /_fragments/schemas/workflow_type_array_example.json
+        ..  literalinclude:: /_fragments/workflow_type_array_example.json
             :language: JSON
 
 
