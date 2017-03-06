@@ -47,6 +47,9 @@ GetLock
     :resheader X-WOPI-LockedByOtherInterface:
         ..  include:: /_fragments/headers/X-WOPI-LockedByOtherInterface.rst
 
+    :resheader X-WOPI-LockedByUser:
+        ..  include:: /_fragments/headers/X-WOPI-LockedByUser.rst
+
 
     :code 200: Success; an **X-WOPI-Lock** response header containing the value of the current lock on the file must
         always be included when using this response code

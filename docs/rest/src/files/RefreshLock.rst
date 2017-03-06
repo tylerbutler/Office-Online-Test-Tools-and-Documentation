@@ -44,6 +44,9 @@ RefreshLock
     :resheader X-WOPI-LockedByOtherInterface:
         ..  include:: /_fragments/headers/X-WOPI-LockedByOtherInterface.rst
 
+    :resheader X-WOPI-LockedByUser:
+        ..  include:: /_fragments/headers/X-WOPI-LockedByUser.rst
+
 
     :code 200: Success
     :code 400: **X-WOPI-Lock** was not provided or was empty
