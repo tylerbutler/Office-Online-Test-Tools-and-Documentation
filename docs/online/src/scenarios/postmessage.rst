@@ -171,8 +171,8 @@ You can send the following messages; all others are ignored:
     ..  attribute:: Values
         :noindex:
 
-        Hosts can support inserting multiple images at once. Thus, the *Values* property should be an array of
-        objects, where each object in the array has the following properties:
+        Hosts can support inserting multiple images at once. Thus, the *Values* property contains an *Items* property
+        that should be an array of objects, where each object in the array has the following properties:
 
         **Extension** *(string)*
             The file extension for the selected file. This value must begin with a ``.``.
@@ -193,20 +193,22 @@ You can send the following messages; all others are ignored:
         {
             "MessageId": "Host_InsertImage",
             "SendTime": 1329014075000,
-            "Values": [
-                {
-                    "Extension": ".jpg",
-                    "SourceUrl": "https://contosodrive.com/images/1aed278abdec74ab.jpg",
-                    "Width": 800,
-                    "Height": 600
-                },
-                {
-                    "Extension": ".jpg",
-                    "SourceUrl": "https://contosodrive.com/images/259aef4d21a84edb.jpg",
-                    "Width": 800,
-                    "Height": 600
-                }
-            ]
+            "Values": {
+                "Items": [
+                    {
+                        "Extension": ".jpg",
+                        "SourceUrl": "https://contosodrive.com/images/1aed278abdec74ab.jpg",
+                        "Width": 800,
+                        "Height": 600
+                    },
+                    {
+                        "Extension": ".jpg",
+                        "SourceUrl": "https://contosodrive.com/images/259aef4d21a84edb.jpg",
+                        "Width": 800,
+                        "Height": 600
+                    }
+                ]
+            }
         }
 
 ..  data:: Host_PerfTiming
