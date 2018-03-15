@@ -1,4 +1,4 @@
- 
+
 ..  index:: WOPI requests; CheckFileInfo, CheckFileInfo
 
 ..  |operation| replace:: CheckFileInfo
@@ -420,6 +420,16 @@ Other miscellaneous properties
 
 ..  glossary::
     :sorted:
+
+    AccessTokenExpiry
+        The time at which the :term:`access token` that was used to make the CheckFileInfo request will expire,
+        represented as the number of milliseconds since January 1, 1970 UTC (the date epoch in JavaScript). The expiry
+        should be expressed as a **long**, a 64-bit signed integer.
+
+        This value should match the :term:`access_token_ttl`, and can be used by non-Web-based clients to determine
+        when the access token will expire.
+
+        ..  versionadded:: TBD
 
     AllowAdditionalMicrosoftServices
         A **Boolean** value that indicates a WOPI client may connect to Microsoft services to provide end-user

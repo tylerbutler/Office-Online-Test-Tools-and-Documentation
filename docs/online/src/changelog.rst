@@ -4,6 +4,16 @@
 What's New
 ==========
 
+..  _version_tbd:
+
+Version TBD
+-----------
+
+*DATE TBD*
+
+* :ref:`CheckFileInfo` now supports an additional optional parameter, :ref:`AccessTokenExpiry`.
+
+
 ..  _2016.01.27:
 
 Version 2016.01.27

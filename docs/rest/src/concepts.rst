@@ -104,6 +104,8 @@ understanding the requirements for integration with WOPI clients such as |wac| a
 
             Future updates to the WOPI protocol may rename this parameter so its name is less confusing.
 
+        ..  seealso:: :term:`AccessTokenExpiry`
+
 
     Lock
         A lock is a conceptual construct that is associated with a file. Locks serve two purposes in WOPI:
