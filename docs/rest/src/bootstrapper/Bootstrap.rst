@@ -15,7 +15,7 @@ Bootstrap
 
     The |operation| operation is used to 'convert' an OAuth token into appropriate WOPI
     :term:`access tokens<access token>` and provides access to WOPI operations for applications using OAuth tokens,
-    like |Office iOS|. For more information see :ref:`native`.
+    like |Office iOS|. For more information see :ref:`native wopi`.
 
     ..  important:: Connections to the bootstrapper must be made using :abbr:`TLS (Transport Layer Security)`.
 
